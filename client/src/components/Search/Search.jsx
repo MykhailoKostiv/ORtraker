@@ -34,7 +34,7 @@ export function Search(props) {
   const levels = ["УСП-УПС", "УПЮ14+Д", "УПЮ14-Д", "УПЮ14+Х", "УПЮ14-Х", "Всі"];
 
   async function onClick(data) {
-    const result = await fetch(`${window.location.href}/teams/${data.value}`);
+    const result = await fetch(`${window.location.href}teams/${data.value}`);
     const points = [];
     const teamsAndPoints = await result.json();
 
@@ -55,7 +55,7 @@ export function Search(props) {
   }
 
   useEffect(() => {
-    fetch(`${window.location.href}/teams`)
+    fetch(`${window.location.href}teams`)
       .then((response) => response.json())
       .then((data) => {
         setTeams(
