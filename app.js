@@ -4,8 +4,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.static("./client/build"));
-
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 
 app.get("/teams", async (req, res) => {
   const teams = await axios({
