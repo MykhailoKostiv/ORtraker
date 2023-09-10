@@ -12,7 +12,6 @@ export const pointsToCoords = [
   { title: "C", value: [49.639667, 24.399513] },
   { title: "Y", value: [49.643336, 24.474357] },
   { title: "Z", value: [49.631336, 24.414357] },
-  { title: "X", value: [49.632336, 24.414357] },
   { title: "R", value: [49.65566582666878, 24.431663565916153] },
 ];
 
@@ -26,9 +25,9 @@ const startFinishPoints = [
   { title: "R", value: [49.65566582666878, 24.431663565916153] },
 ];
 
-const baseUrl = window.location.href.endsWith("/")
-  ? window.location.href
-  : `${window.location.href}/`;
+// const baseUrl = window.location.href.endsWith("/")
+//   ? window.location.href
+//   : `${window.location.href}/`;
 
 export function Search(props) {
   const [teams, setTeams] = useState([]);
@@ -38,9 +37,9 @@ export function Search(props) {
   const levels = ["УСП-УПС", "УПЮ14+Д", "УПЮ14-Д", "УПЮ14+Х", "УПЮ14-Х", "Всі"];
 
   async function onClick(data) {
-    const result = await fetch(`${baseUrl}teams/${data.value}`);
+    // const result = await fetch(`${baseUrl}teams/${data.value}`);
 
-    // const result = await fetch(`${window.location.href}teams/${data.value}`);
+    const result = await fetch(`${window.location.href}teams/${data.value}`);
     const points = [];
     const teamsAndPoints = await result.json();
 
@@ -61,7 +60,7 @@ export function Search(props) {
   }
 
   useEffect(() => {
-    fetch(`${baseUrl}teams`)
+    fetch(`${window.location.href}teams`)
       .then((response) => response.json())
       .then((data) => {
         setTeams(
