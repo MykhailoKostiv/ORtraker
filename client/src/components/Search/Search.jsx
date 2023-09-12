@@ -82,7 +82,7 @@ export function Search(props) {
       })
       .catch((err) => {
         console.log(err.message);
-        // NotificationManager.error("Помилка");
+        NotificationManager.error("Не вдалося з'єднатися з сервером");
       });
   }, []);
 
