@@ -11,7 +11,6 @@ app.get("/teams", async (req, res) => {
     method: "get",
     url: "https://osinnij-raid-2023-b0097a35cf80.herokuapp.com/teams",
   });
-  console.log(teams);
 
   res.json(teams.data);
 });

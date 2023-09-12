@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "react-notifications/lib/notifications.css";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationManager } from "react-notifications";
 
 export const pointsToCoords = [
   { title: "A", value: [49.659785, 24.476246] },
@@ -21,19 +18,11 @@ pointsToCoords.forEach((el) => {
   pointsHash[el.title] = el;
 });
 
-const startFinishPoints = [
-  { title: "R", value: [49.65566582666878, 24.431663565916153] },
-];
-
-// const baseUrl = window.location.href.endsWith("/")
-//   ? window.location.href
-//   : `${window.location.href}/`;
-
 export function Search(props) {
   const [teams, setTeams] = useState([]);
   const [filteredTeams, setFilteredTeams] = useState([]);
   const [currentRadio, setCurrentRadio] = useState("Всі");
-
+  const teamsProgress = [];
   const levels = ["УСП-УПС", "УПЮ14+Д", "УПЮ14-Д", "УПЮ14+Х", "УПЮ14-Х", "Всі"];
 
   async function onClick(data) {
@@ -51,8 +40,7 @@ export function Search(props) {
         points.push({ title: el, value: pointsHash[el].value });
       }
     });
-    console.log(pointsHash);
-    console.log("dasda", points);
+    console.log(teamsAndPoints);
 
     props.setCurrentTeamPoints([...points]);
   }
@@ -60,6 +48,10 @@ export function Search(props) {
   function onChange(newRadio) {
     setCurrentRadio(newRadio);
     setFilteredTeams(teams.filter((el) => el.level === newRadio));
+    if (newRadio === "Всі") {
+      setFilteredTeams(teams);
+    }
+    console.log(filteredTeams);
   }
 
   useEffect(() => {
@@ -74,12 +66,18 @@ export function Search(props) {
         setTeams(
           data.map((el) => ({ label: el.title, value: el.id, level: el.level }))
         );
+
         setFilteredTeams(
           data.map((el) => ({ label: el.title, value: el.id, level: el.level }))
         );
 
-        // console.log(data);
+        data.map((el) => {
+          teamsProgress.push({ title: el.title, countOfPoints: el.id });
+        });
+
+        console.log(teamsProgress);
       })
+
       .catch((err) => {
         console.log(err.message);
         NotificationManager.error("Не вдалося з'єднатися з сервером");
@@ -102,7 +100,7 @@ export function Search(props) {
                 id={el}
                 type="radio"
                 value={el}
-                name="gender"
+                name="level"
                 checked={currentRadio === el}
                 onChange={(e) => onChange(e.target.value)}
               ></input>

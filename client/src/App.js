@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { Search } from "./components/Search/Search";
 import { Map } from "./components/Map/Map";
 import { NotificationContainer } from "react-notifications";
+import { ProgressBar } from "./components/ProgressBar/ProgressBar";
 
 function App() {
   const [currentTeamPoints, setCurrentTeamPoints] = useState([]);
@@ -13,6 +14,7 @@ function App() {
       <NotificationContainer />
       <Map currentTeamPoints={currentTeamPoints} />
       <Search setCurrentTeamPoints={setCurrentTeamPoints} />
+      <ProgressBar />
     </div>
   );
 }
