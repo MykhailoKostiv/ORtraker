@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 
 export const pointsToCoords = [
   { title: "A", value: [49.659785, 24.476246] },
@@ -71,11 +72,11 @@ export function Search(props) {
           data.map((el) => ({ label: el.title, value: el.id, level: el.level }))
         );
 
-        data.map((el) => {
-          teamsProgress.push({ title: el.title, countOfPoints: el.id });
-        });
+        // data.map((el) => {
+        //   teamsProgress.push({ title: el.title, countOfPoints: el.id });
+        // });
 
-        console.log(teamsProgress);
+        // console.log(teamsProgress);
       })
 
       .catch((err) => {
@@ -85,30 +86,35 @@ export function Search(props) {
   }, []);
 
   return (
-    <div className="search">
-      <Select
-        options={filteredTeams}
-        onChange={(data) => onClick(data)}
-        placeholder="Оберіть команду..."
-        className="select"
-      />
-      <div className="radio-buttons">
-        {levels.map((el) => {
-          return (
-            <div className="radio-inputs">
-              <input
-                id={el}
-                type="radio"
-                value={el}
-                name="level"
-                checked={currentRadio === el}
-                onChange={(e) => onChange(e.target.value)}
-              ></input>
-              <label htmlFor={el}>{el}</label>
-            </div>
-          );
-        })}
+    <div>
+      <div className="search">
+        <Select
+          options={filteredTeams}
+          onChange={(data) => onClick(data)}
+          placeholder="Оберіть команду..."
+          className="select"
+        />
+        <div className="radio-buttons">
+          {levels.map((el) => {
+            return (
+              <div className="radio-inputs">
+                <input
+                  id={el}
+                  type="radio"
+                  value={el}
+                  name="level"
+                  checked={currentRadio === el}
+                  onChange={(e) => onChange(e.target.value)}
+                ></input>
+                <label className="radio-input-label" htmlFor={el}>
+                  {el}
+                </label>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <ProgressBar />
     </div>
   );
 }

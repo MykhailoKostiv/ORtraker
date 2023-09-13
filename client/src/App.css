@@ -16,10 +16,32 @@
 @media (max-width: 550px) {
   .search {
     width: 80% !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
   }
   .radio-buttons {
-    overflow: auto;
-    white-space: nowrap;
+    height: unset !important;
+  }
+
+  .progress {
+    display: none;
+  }
+  .map {
+    width: 100% !important;
+  }
+  .side-bar {
+    display: none;
+    width: 0px !important;
+  }
+}
+
+@media (max-width: 910px) {
+  .radio-buttons {
+    height: 30px;
+    overflow: auto !important;
+    white-space: nowrap !important;
   }
 }
 
@@ -48,7 +70,7 @@
 }
 
 .App {
-  /* display: flex; */
+  display: flex;
   flex-direction: row;
   font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 }
@@ -56,7 +78,6 @@
 .search {
   width: auto;
   height: 100px;
-  position: absolute;
   top: 0;
   right: 0;
   z-index: 1000;
@@ -65,7 +86,7 @@
 
 .map {
   height: 100vh;
-  width: 100%;
+  width: 75%;
 }
 .radio-buttons {
   display: flex;
@@ -76,9 +97,15 @@
   padding: 5px;
   border-radius: 30px;
   background-color: rgb(255, 241, 241);
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+
 .radio-inputs {
   margin: 0 5px;
+  display: flex;
+  text-align: center;
+  min-width: 78px;
 }
 
 .button {
@@ -131,11 +158,11 @@ body {
 }
 
 .progress-container {
-  /* height: 20px; */
+  height: 20px;
   width: auto;
   background-color: #e0e0de;
   border-radius: 50px;
-  margin: 5px 50px 15px 50px;
+  margin: 15px 5px;
 }
 
 .title {
@@ -145,10 +172,36 @@ body {
   white-space: nowrap;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(146, 145, 145);
+  border-radius: 20px;
+  padding: 20px 0;
+}
 .progress {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1000;
-  width: 35%;
+  width: auto;
+  border: #465165 solid 2px;
+  border-radius: 20px;
+  margin: 0 15px;
+  overflow-y: auto;
+  height: 85%;
+}
+
+.side-bar {
+  height: 100vh;
+  width: 25%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-input-label {
+  margin: 3px;
 }

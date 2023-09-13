@@ -2,9 +2,11 @@ import React from "react";
 
 export function ProgressBar() {
   const teamsProgress = [
-    { title: "Тестова команда", countOFPoints: 1 },
+    { title: "Тестова команда", countOFPoints: 3 },
     { title: "asdasd", countOFPoints: 12 },
     { title: "asdasd", countOFPoints: 49 },
+    { title: "asdasd", countOFPoints: 16 },
+    { title: "asdasd", countOFPoints: 16 },
     { title: "asdasd", countOFPoints: 16 },
   ];
 
