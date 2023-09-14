@@ -1,14 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export function ProgressBar() {
-  const teamsProgress = [
-    { title: "Тестова команда", countOFPoints: 3 },
-    { title: "asdasd", countOFPoints: 12 },
-    { title: "asdasd", countOFPoints: 49 },
-    { title: "asdasd", countOFPoints: 16 },
-    { title: "asdasd", countOFPoints: 16 },
-    { title: "asdasd", countOFPoints: 16 },
-  ];
+export function ProgressBar({ teamsProgress }) {
+  teamsProgress.sort((a, b) => b.countOfPoints - a.countOfPoints);
 
   return (
     <div className="progress">
@@ -17,10 +10,10 @@ export function ProgressBar() {
           <div className="progress-container">
             <div
               className="team-progress"
-              style={{ width: `${(el.countOFPoints / 50) * 100}%` }}
+              style={{ width: `${(el.countOfPoints / 50) * 100}%` }}
             >
-              <div className="progress-bar title">{`${el.title}`}</div>
-              <div className="progress-bar">{`${el.countOFPoints}/50`}</div>
+              <div className="progress-bar title">{`${el.label}`}</div>
+              <div className="progress-bar">{`${el.countOfPoints}/50`}</div>
             </div>
           </div>
         );

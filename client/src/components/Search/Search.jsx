@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
-import { ProgressBar } from "../ProgressBar/ProgressBar";
 
 export const pointsToCoords = [
   { title: "A", value: [49.659785, 24.476246] },
@@ -23,7 +22,7 @@ export function Search(props) {
   const [teams, setTeams] = useState([]);
   const [filteredTeams, setFilteredTeams] = useState([]);
   const [currentRadio, setCurrentRadio] = useState("Всі");
-  const teamsProgress = [];
+
   const levels = ["УСП-УПС", "УПЮ14+Д", "УПЮ14-Д", "УПЮ14+Х", "УПЮ14-Х", "Всі"];
 
   async function onClick(data) {
@@ -41,7 +40,6 @@ export function Search(props) {
         points.push({ title: el, value: pointsHash[el].value });
       }
     });
-    console.log(teamsAndPoints);
 
     props.setCurrentTeamPoints([...points]);
   }
@@ -51,9 +49,13 @@ export function Search(props) {
     setFilteredTeams(teams.filter((el) => el.level === newRadio));
     if (newRadio === "Всі") {
       setFilteredTeams(teams);
+      props.setTeamsProgress(teams);
     }
-    console.log(filteredTeams);
   }
+
+  useEffect(() => {
+    props.setTeamsProgress(filteredTeams);
+  }, [filteredTeams]);
 
   useEffect(() => {
     const url =
@@ -65,18 +67,29 @@ export function Search(props) {
       .then((response) => response.json())
       .then((data) => {
         setTeams(
-          data.map((el) => ({ label: el.title, value: el.id, level: el.level }))
+          data.map((el) => ({
+            label: el.title,
+            value: el.id,
+            level: el.level,
+            countOfPoints: el.points_count,
+          }))
         );
 
         setFilteredTeams(
-          data.map((el) => ({ label: el.title, value: el.id, level: el.level }))
+          data.map((el) => ({
+            label: el.title,
+            value: el.id,
+            level: el.level,
+            countOfPoints: el.points_count,
+          }))
         );
 
-        // data.map((el) => {
-        //   teamsProgress.push({ title: el.title, countOfPoints: el.id });
-        // });
-
-        // console.log(teamsProgress);
+        props.setTeamsProgress(
+          data.map((el) => ({
+            label: el.title,
+            countOfPoints: el.points_count,
+          }))
+        );
       })
 
       .catch((err) => {
@@ -86,35 +99,32 @@ export function Search(props) {
   }, []);
 
   return (
-    <div>
-      <div className="search">
-        <Select
-          options={filteredTeams}
-          onChange={(data) => onClick(data)}
-          placeholder="Оберіть команду..."
-          className="select"
-        />
-        <div className="radio-buttons">
-          {levels.map((el) => {
-            return (
-              <div className="radio-inputs">
-                <input
-                  id={el}
-                  type="radio"
-                  value={el}
-                  name="level"
-                  checked={currentRadio === el}
-                  onChange={(e) => onChange(e.target.value)}
-                ></input>
-                <label className="radio-input-label" htmlFor={el}>
-                  {el}
-                </label>
-              </div>
-            );
-          })}
-        </div>
+    <div className="search">
+      <Select
+        options={filteredTeams}
+        onChange={(data) => onClick(data)}
+        placeholder="Оберіть команду..."
+        className="select"
+      />
+      <div className="radio-buttons">
+        {levels.map((el) => {
+          return (
+            <div className="radio-inputs">
+              <input
+                id={el}
+                type="radio"
+                value={el}
+                name="level"
+                checked={currentRadio === el}
+                onChange={(e) => onChange(e.target.value)}
+              ></input>
+              <label className="radio-input-label" htmlFor={el}>
+                {el}
+              </label>
+            </div>
+          );
+        })}
       </div>
-      <ProgressBar />
     </div>
   );
 }
