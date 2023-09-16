@@ -107,9 +107,9 @@ export function Search(props) {
         className="select"
       />
       <div className="radio-buttons">
-        {levels.map((el) => {
+        {levels.map((el, index) => {
           return (
-            <div className="radio-inputs">
+            <div key={index} className="radio-inputs">
               <input
                 id={el}
                 type="radio"

@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export function ProgressBar({ teamsProgress }) {
   teamsProgress.sort((a, b) => b.countOfPoints - a.countOfPoints);
 
   return (
     <div className="progress">
-      {teamsProgress.map((el) => {
+      {teamsProgress.map((el, index) => {
         return (
           <div className="progress-container">
             <div
+              key={index}
               className="team-progress"
               style={{ width: `${(el.countOfPoints / 50) * 100}%` }}
             >

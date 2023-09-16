@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Tooltip,
+  Polyline,
+} from "react-leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
@@ -7,12 +13,19 @@ import { pointsToCoords } from "../Search/Search";
 
 export function Map({ currentTeamPoints }) {
   const [isSatelliteView, setIsSatelliteView] = useState(false);
-
   const toggleSatelliteView = (event) => {
     setIsSatelliteView(!isSatelliteView);
   };
+  const blueOptions = { color: "blue" };
+
+  const root = currentTeamPoints.map((el) => el.value);
 
   function currentToltip(title) {
+    const lastElement = currentTeamPoints[currentTeamPoints.length - 1];
+
+    if (lastElement && lastElement.title === title) {
+      return <span className="last-taken-point">{title}</span>;
+    }
     if (currentTeamPoints.map((el) => el.title).includes(title)) {
       return <span className="taken-point">{title}</span>;
     }
@@ -55,7 +68,9 @@ export function Map({ currentTeamPoints }) {
           </Marker>
         ))}
 
-        <button onClick={toggleSatelliteView} className="button">
+        <Polyline pathOptions={blueOptions} positions={root} />
+
+        <button onClick={toggleSatelliteView} className="button-satellite">
           {isSatelliteView ? "Карта" : "Супутник"}
         </button>
       </MapContainer>
