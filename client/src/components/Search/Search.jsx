@@ -39,6 +39,7 @@ export function Search(props) {
       if (el in pointsHash) {
         points.push({ title: el, value: pointsHash[el].value });
       }
+      console.log(points);
     });
 
     props.setCurrentTeamPoints([...points]);

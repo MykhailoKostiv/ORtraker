@@ -19,7 +19,7 @@ export function ShowProgress({ teamsProgress }) {
                 <button
                   onClick={toggleStatistic}
                   type="button"
-                  class="btn-close mt-2"
+                  class="btn-close mt-2 me-1"
                   aria-label="Close"
                 ></button>
               </div>
