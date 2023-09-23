@@ -74,7 +74,7 @@
   left: 0;
   z-index: 1000;
   margin: 15px;
-  width: 105px;
+  width: 110px;
   cursor: pointer;
   pointer-events: auto;
 }
@@ -85,7 +85,7 @@
   left: 0;
   z-index: 1000;
   margin: 15px;
-  width: 105px;
+  width: 110px;
 }
 
 .taken-point {

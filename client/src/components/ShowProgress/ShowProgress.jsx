@@ -12,14 +12,14 @@ export function ShowProgress({ teamsProgress }) {
   return (
     <div className="show-statistik-container ">
       {showStatistic && (
-        <div className="statistic-container col-md-8 offset-md-2 col-12 col-sm-12 shadow-lg  bg-white rounded">
+        <div className="statistic-container col-md-8 offset-md-2 col-12 col-sm-12 shadow-lg bg-white rounded ">
           <div className="row">
             <div>
               <div className="close-statistic-button-wraper">
                 <button
                   onClick={toggleStatistic}
                   type="button"
-                  class="btn-close mt-2 me-1"
+                  className="btn-close mt-2 me-1"
                   aria-label="Close"
                 ></button>
               </div>
@@ -33,6 +33,7 @@ export function ShowProgress({ teamsProgress }) {
         <button
           onClick={toggleStatistic}
           className="button-statistic btn btn-primary"
+          type="button"
         >
           Статистика
         </button>
