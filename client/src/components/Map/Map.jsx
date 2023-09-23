@@ -70,7 +70,10 @@ export function Map({ currentTeamPoints }) {
 
         <Polyline pathOptions={blueOptions} positions={root} />
 
-        <button onClick={toggleSatelliteView} className="button-satellite">
+        <button
+          onClick={toggleSatelliteView}
+          className="button-satellite btn btn-primary "
+        >
           {isSatelliteView ? "Карта" : "Супутник"}
         </button>
       </MapContainer>
