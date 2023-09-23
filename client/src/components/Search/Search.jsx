@@ -106,10 +106,13 @@ export function Search(props) {
         placeholder="Оберіть команду..."
         className="select"
       />
-      <div className="btn-group btn-group-toggle mt-2">
+      <div
+        className="btn-group btn-group-toggle mt-2 d-block d-sm-flex overflow-auto huinia"
+        role="group"
+      >
         {levels.map((el, index) => {
           return (
-            <div key={index} className="btn btn-light btn-sm ">
+            <div key={index} className="text-nowrap d-grid ">
               <input
                 id={el}
                 type="radio"
@@ -117,8 +120,12 @@ export function Search(props) {
                 name="level"
                 checked={currentRadio === el}
                 onChange={(e) => onChange(e.target.value)}
+                className="btn-check"
               ></input>
-              <label className="radio-input-label" htmlFor={el}>
+              <label
+                className="radio-input-label btn btn-light btn-sm "
+                htmlFor={el}
+              >
                 {el}
               </label>
             </div>

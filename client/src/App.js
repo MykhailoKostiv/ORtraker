@@ -6,12 +6,13 @@ import { Map } from "./components/Map/Map";
 import { NotificationContainer } from "react-notifications";
 import { ShowProgress } from "./components/ShowProgress/ShowProgress";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   const [currentTeamPoints, setCurrentTeamPoints] = useState([]);
   const [teamsProgress, setTeamsProgress] = useState([]);
 
   return (
-    <div className="App">
+    <div className="App ">
       <NotificationContainer />
       <Map currentTeamPoints={currentTeamPoints}></Map>
       <Search
