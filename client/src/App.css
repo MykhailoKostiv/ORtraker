@@ -1,0 +1,205 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (max-width: 550px) {
+  .search {
+    width: unset;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  .radio-buttons {
+    height: unset;
+  }
+
+  .map {
+    width: 100%;
+  }
+  .statistic-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 910px) {
+  .radio-buttons {
+    height: 25px;
+    overflow: auto !important;
+    white-space: nowrap !important;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  /* font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif; */
+}
+
+.search {
+  width: auto;
+  height: 100px;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  margin: 15px;
+  position: absolute;
+}
+
+.map {
+  height: 100vh;
+  width: 100%;
+}
+
+.radio-buttons {
+  display: flex;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-top: 5px;
+  border: 2px solid #465165;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(255, 241, 241);
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.radio-inputs {
+  margin: 0 5px;
+  display: flex;
+  text-align: center;
+  min-width: 78px;
+}
+
+.button-satellite {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  margin: 15px;
+  width: 105px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.button-statistic {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  z-index: 1000;
+  margin: 15px;
+  width: 105px;
+}
+
+.taken-point {
+  color: red;
+  font-weight: bold;
+}
+.last-taken-point {
+  color: chartreuse;
+  font-weight: bold;
+}
+
+.team-progress {
+  height: 20px;
+  background-color: rgb(89, 197, 251);
+  border-radius: 50px;
+  text-align: right;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar-custom {
+  padding: 5px;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.progress-container {
+  height: 20px;
+  width: auto;
+  background-color: #e0e0de;
+  border-radius: 50px;
+  margin: 15px 5px;
+}
+
+.title {
+  text-align: left;
+  width: 100%;
+  display: table;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(146, 145, 145);
+  border-radius: 20px;
+  padding: 20px 0;
+}
+.progress-custom {
+  width: auto;
+  margin: 0 15px;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.radio-input-label {
+  margin: 3px;
+}
+
+.statistic-container {
+  width: 70%;
+  height: 65%;
+  background-color: white;
+  position: absolute;
+  z-index: 1001;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.show-statistik-container {
+  display: flex;
+}
+
+.close-statistic-button {
+  position: absolute;
+  right: 0;
+  background-color: red;
+}
+
+.close-statistic-button-span {
+  font-weight: bold;
+  color: #e0e0de;
+}
