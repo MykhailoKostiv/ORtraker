@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 575px) {
-  .huinia {
+  .responsive-radio {
     height: 100px;
   }
 }
@@ -113,6 +113,18 @@
   border-radius: 50px;
   border-collapse: separate;
   border-spacing: 5px;
+}
+
+.progress-bar-custom-title {
+  padding: 5px;
+  color: rgb(0, 0, 0);
+  border-radius: 50px;
+  border-collapse: separate;
+  border-spacing: 5px;
+  text-align: left;
+  width: 30%;
+  display: table;
+  white-space: nowrap;
 }
 
 .progress-container {
