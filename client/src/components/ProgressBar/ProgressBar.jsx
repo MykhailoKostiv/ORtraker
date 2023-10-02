@@ -10,10 +10,10 @@ export function ProgressBar({ teamsProgress }) {
           <div key={index} className="progress-container">
             <div
               className="team-progress"
-              style={{ width: `${(el.countOfPoints / 44) * 100}%` }}
+              style={{ width: `${(el.countOfPoints / 50) * 100}%` }}
             >
-              <div className="progress-bar-custom-title">{`${el.label}`}</div>
-              <div className="progress-bar-custom">{`${el.countOfPoints}/44`}</div>
+              <div className="progress-bar-custom title">{`${el.label}`}</div>
+              <div className="progress-bar-custom">{`${el.countOfPoints}/50`}</div>
             </div>
           </div>
         );
