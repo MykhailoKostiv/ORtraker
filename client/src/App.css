@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+html,
 body {
   overflow-y: hidden;
 }
